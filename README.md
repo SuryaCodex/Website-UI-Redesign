@@ -190,10 +190,5 @@ This project is licensed under the MIT License.
 
 ---
 
-## Acknowledgments
 
-Thanks to all stakeholders, testers, and contributors who provided valuable feedback throughout the redesign process.
 
----
-
-⭐ If you found this project helpful, consider giving it a star and sharing your feedback.
