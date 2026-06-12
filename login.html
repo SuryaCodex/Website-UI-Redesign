@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Luxe Shop - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#737686",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container-high": "#dee8ff",
+                    "surface": "#f9f9ff",
+                    "tertiary": "#006242",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "secondary": "#712ae2",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#5a00c6",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-tint": "#0053db",
+                    "secondary-container": "#8a4cfc",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "inverse-surface": "#263143",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "surface-dim": "#cfdaf2",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-container": "#bdffdb",
+                    "surface-container-highest": "#d8e3fb",
+                    "on-tertiary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#25005a",
+                    "on-background": "#111c2d",
+                    "tertiary-container": "#007d55",
+                    "secondary-fixed-dim": "#d2bbff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container": "#e7eeff",
+                    "on-primary-container": "#eeefff",
+                    "on-primary-fixed": "#00174b",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-variant": "#d8e3fb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#ecf1ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#eaddff",
+                    "background": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "on-surface": "#111c2d",
+                    "on-secondary-container": "#fffbff",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "gutter": "12px",
+                    "container-margin": "16px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f9f9ff;
+            color: #111c2d;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .floating-label-group {
+            position: relative;
+        }
+        .floating-label-group input:focus ~ label,
+        .floating-label-group input:not(:placeholder-shown) ~ label {
+            transform: translateY(-24px) scale(0.85);
+            color: #004ac6;
+            background-color: transparent;
+            padding: 0 4px;
+        }
+        .floating-label-group label {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            color: #737686;
+        }
+        .btn-press:active {
+            transform: scale(0.97);
+        }
+
+        /* Entrance Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-entrance {
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Pulse for loading button */
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.98); }
+        }
+        .btn-loading {
+            pointer-events: none;
+            animation: pulse-subtle 1s ease-in-out infinite;
+        }
+
+        /* View transition dummy state */
+        .page-transitioning {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-md">
+<!-- Top Glow Effect -->
+<div class="fixed top-[-10%] left-[-10%] w-[60%] h-[40%] bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[60%] h-[40%] bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<main class="w-full max-w-md flex flex-col z-10 opacity-0 animate-entrance">
+<!-- Header Section -->
+<div class="text-center mb-xl">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-container shadow-lg shadow-primary/20 mb-md">
+<span class="material-symbols-outlined text-on-primary-container text-[32px]">shopping_bag</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background tracking-tight">LUXE SHOP</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs">Experience premium retail curation</p>
+</div>
+<!-- Login Form Card -->
+<div class="glass-card rounded-[24px] p-lg shadow-xl shadow-on-background/5">
+<h2 class="font-headline-md text-headline-md text-on-background mb-lg">Welcome back</h2>
+<form class="space-y-lg" id="loginForm">
+<!-- Email Field -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-md bg-surface-container-low border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-on-surface" id="email" placeholder=" " required="" type="email"/>
+<label class="font-label-lg text-label-lg" for="email">Email Address</label>
+</div>
+<!-- Password Field -->
+<div class="floating-label-group">
+<input class="w-full h-14 px-md bg-surface-container-low border border-outline-variant rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-on-surface" id="password" placeholder=" " required="" type="password"/>
+<label class="font-label-lg text-label-lg" for="password">Password</label>
+<button class="absolute right-4 top-4 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<!-- Forgot Password -->
+<div class="flex justify-end">
+<a class="font-label-lg text-label-lg text-primary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<!-- Sign In Button -->
+<button class="btn-press w-full h-14 bg-primary text-on-primary font-title-lg text-title-lg rounded-xl shadow-lg shadow-primary/25 hover:bg-primary-container transition-all flex items-center justify-center gap-xs" id="signInBtn" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center gap-md my-xl">
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">or continue with</span>
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+</div>
+<!-- Social Login Options -->
+<div class="grid grid-cols-2 gap-md">
+<button class="btn-press flex items-center justify-center gap-xs h-12 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors font-label-lg text-label-lg text-on-surface-variant">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5dhRx_SOHUMeMLEG6g06Ez5DcINGUkJE-sujqXGljIl15_YzU9wK2wH3ERvTt86Gv5KSygc4UK0iir-8Nyi7vtykFJguj7CNpNhfVnFSTM7xw58YNNHI4J-qArYbgdTb7uQpm9QrlB3I7N3xifUnr6k2P-bS0rMdouvJrataxNF5aZeQCxRjTWcE4pibme0uFZgGSg1LO3ZWMLY8v-7xq6GC9EhiCc3FIJY-V0f7oYn6A4hnjQbJcIy0nkUOGNiAA68SMb_kKkw"/>
+                Google
+            </button>
+<button class="btn-press flex items-center justify-center gap-xs h-12 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors font-label-lg text-label-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-[#1877F2]">face_nod</span>
+                Facebook
+            </button>
+</div>
+</div>
+<!-- Footer Actions -->
+<p class="text-center mt-xl font-body-md text-body-md text-on-surface-variant">
+        Don't have an account? 
+        <a class="text-primary font-bold hover:underline transition-all" href="#" id="signUpLink">Sign Up</a>
+</p>
+<!-- Product Preview Hint -->
+<div class="mt-xl pt-lg border-t border-outline-variant/30 flex items-center justify-center gap-xl overflow-hidden opacity-40 grayscale">
+<div class="flex flex-col items-center gap-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Watch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiEyFauwGOYGJc7yh5rC_WAeNwcIMsPQzt1ppGw-lBPdkXwkT-Gmev0OOh0dZwyOxy7GonK7_CII3KQUKoCO8yitmaZMSof8ylnkKh6A5P7i-hM8atrgvWSN-32vbfDhV1AyI-l5NbPEgxj062PH9yWtEyAPs2d2G2QGpzo-A_ob5QQC8YQz9zV4XU25YSye95Ff94ElcSXRatjoohC7gRLdXrWNNuaZztNuwyW0WmuXCwWmHks8wgT-CfLeUpQWO3pRt8UO05tw"/>
+</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Sneaker" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2gMwA3DtrNXUN1X1sslGdDd1NspfI8fVXDcO6Fnpsl11MNxta1SIWhV940YK1sIlARur_LsukvJv-qrZaBKdym7pKITSxNZq0ay2Gaav5eqHjGVQzuOJFxiCOfRT7GzR5w7b3vgNdCGRnD8zW49nOuRZ-kU04cdPgNAhERpDtpSFGUmXyzRAHAOFoPQarHI036XvS9JVE_2OqPjAHyRYGBC-MHflD-5Rj_y665Mr12agbBL5BYzWe1-WMr4ftcaTbzsJMzoWgMg"/>
+</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChTnfrTc2y1y5wwrztT6BZ0zEq_DnR9plTBWKnmqjpsb4qv1uOTBCpLSQBOAyesjQBX3YktCoMsi6FU6cLUpiOxmhE-vGF9cs0VwDO7I8-5uOuTOH4DmKimf2KefIKWIiAolQUS5hD1d2i9C-ru1zPnTpsbxMshQCsaCzHoce7N_lwh4U6Qcj1KMhEtFOTksU_urDS5cM2UpIklHDUTxFGf_x4GGu5tydSjyxIPuzPag_tU6rYfvOcfLu7WrKsEUFsRAsdywe8gQ"/>
+</div>
+</div>
+</div>
+</main>
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const signInBtn = document.getElementById('signInBtn');
+    const signUpLink = document.getElementById('signUpLink');
+    const mainContent = document.querySelector('main');
+
+    // Password visibility toggle logic
+    document.querySelectorAll('.floating-label-group button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('input');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+    });
+
+    // Form submission interactivity
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Start loading state
+        signInBtn.classList.add('btn-loading');
+        signInBtn.innerHTML = `
+            <span class="material-symbols-outlined animate-spin">sync</span>
+            <span>Signing in...</span>
+        `;
+        
+        // Simulate a brief delay before "redirecting"
+        setTimeout(() => {
+            // Fade out page
+            mainContent.classList.add('page-transitioning');
+            
+            setTimeout(() => {
+                // Navigate to dashboard
+                window.location.href = '#dashboard';
+                // Note: In a real system we'd use actual routing or the provided ID
+                // To fulfill the request conceptually with the provided ID:
+                console.log('Redirecting to {{DATA:SCREEN:SCREEN_117}}');
+                // Mocking navigation by changing view
+                window.location.href = 'dashboard.html';
+            }, 300);
+        }, 1200);
+    });
+
+    // Sign up placeholder transition
+    signUpLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        mainContent.classList.add('page-transitioning');
+        setTimeout(() => {
+            // Sign up flow placeholder
+            mainContent.classList.remove('page-transitioning');
+        }, 500);
+    });
+</script>
+</body></html>

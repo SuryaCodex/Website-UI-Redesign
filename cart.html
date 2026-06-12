@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Luxe Shop - Shopping Cart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#737686",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container-high": "#dee8ff",
+                    "surface": "#f9f9ff",
+                    "tertiary": "#006242",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "secondary": "#712ae2",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#5a00c6",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-tint": "#0053db",
+                    "secondary-container": "#8a4cfc",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "inverse-surface": "#263143",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "surface-dim": "#cfdaf2",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-container": "#bdffdb",
+                    "surface-container-highest": "#d8e3fb",
+                    "on-tertiary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#25005a",
+                    "on-background": "#111c2d",
+                    "tertiary-container": "#007d55",
+                    "secondary-fixed-dim": "#d2bbff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container": "#e7eeff",
+                    "on-primary-container": "#eeefff",
+                    "on-primary-fixed": "#00174b",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-variant": "#d8e3fb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#ecf1ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#eaddff",
+                    "background": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "on-surface": "#111c2d",
+                    "on-secondary-container": "#fffbff",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "12px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "gutter": "12px",
+                    "container-margin": "16px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            },
+            "animation": {
+              "pulse-short": "pulse-short 0.4s ease-in-out",
+              "swipe-hint": "swipe-hint 3s ease-in-out infinite"
+            },
+            "keyframes": {
+              "pulse-short": {
+                "0%, 100%": { "transform": "scale(1)", "color": "inherit" },
+                "50%": { "transform": "scale(1.2)", "color": "#004ac6" }
+              },
+              "swipe-hint": {
+                "0%, 100%": { "transform": "translateX(0)" },
+                "50%": { "transform": "translateX(-40px)" }
+              }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .quantity-highlight {
+            animation: pulse-short 0.3s ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm flex justify-between items-center px-md h-14">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">LUXE SHOP</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-md max-w-2xl mx-auto">
+<!-- Header Section -->
+<header class="mb-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Your Cart</h2>
+<p class="font-body-md text-body-md text-outline">3 items ready for checkout</p>
+</header>
+<!-- Cart Items List -->
+<div class="space-y-md">
+<!-- Item 1 (With Swipe Hint) -->
+<div class="relative overflow-hidden rounded-xl">
+<div class="absolute inset-y-0 right-0 w-20 bg-error flex items-center justify-center text-white">
+<span class="material-symbols-outlined">delete</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex gap-md shadow-sm relative z-10 animate-swipe-hint">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Product" class="w-full h-full object-cover" data-alt="A close-up, high-fidelity photograph of a sleek crimson athletic sneaker positioned against a clean, minimal white background. The lighting is soft and professional, highlighting the intricate texture of the mesh fabric and the glossy finish of the side logo. This product shot embodies a premium e-commerce aesthetic with cool blue undertones in the soft shadows, reflecting a modern and sophisticated brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN5OX-kFAbyWNL0SKfPmq75Wp-oZB2cgcs3Q33-_h_bIy8iswajuDGUhd-A9KUs8X7gsIylpceWtPAteKkTZuuyzZzMjei_-wBNOPCSrXDcwY4OXMukYcqPw3Jd1d6S3D1e4FTjarPLzPqafYZ6WJ0pi-77ogb3Ho9Z77elubXLyjsVRhtKdDlwgRhQBrkdcOBD7NkIBdKNOUevOR4kckY7KnjTi_DhiUcEbPOdvns7dgj3Wh_qIS72Y255ZJnicYOPcTmKqdnNw"/>
+</div>
+<div class="flex flex-col justify-between flex-grow py-1">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Velocity Elite Runner</h3>
+<p class="font-label-sm text-label-sm text-outline">Crimson Red • Size 42</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-title-lg text-title-lg text-primary">$189.00</span>
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-4">
+<button class="w-8 h-8 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="font-label-lg text-label-lg text-on-surface w-4 text-center transition-all">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex gap-md shadow-sm">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Product" class="w-full h-full object-cover" data-alt="A luxury leather minimalist wallet in deep navy blue, presented on a polished marble surface. The shot uses shallow depth of field to emphasize the fine stitching and the subtle grain of the premium leather. The overall color palette is refined, featuring soft blues and crisp whites that align with a high-end minimalist design system. The lighting is bright yet diffused, creating an atmosphere of elegance and technological precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC--PNbUq9usx9ysY5yQrMi9Y89hxOXjxe3iOU_8nTAfvDYWy85YHx9PapjZ_xy7-nHaWoM37i9yCJa6-bjwNrpycOhHurGw_3ST-lJfG7Or55PQ_SuNBakwjRcnUidGHbbQ7q6vaVmqkh6jxycRxzU0RonC6HPxUfn0UGF6lv4jDOy9zX37_Pw71UoLn-p8Yhugi4kTMVYwxT0d2ReNkiNORU8LYCETPS0pYqP2xKZsyvcEGMg_Kpr9sMzwSp28ajjjrVD_4P-Lw"/>
+</div>
+<div class="flex flex-col justify-between flex-grow py-1">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Slimline Card Holder</h3>
+<p class="font-label-sm text-label-sm text-outline">Navy Leather • Minimal</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-title-lg text-title-lg text-primary">$45.00</span>
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-4">
+<button class="w-8 h-8 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="font-label-lg text-label-lg text-on-surface w-4 text-center transition-all">2</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md flex gap-md shadow-sm">
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Premium wireless over-ear headphones in matte black, resting on a contemporary glass desk. The scene is illuminated by a soft, directional light that creates subtle reflections on the metallic headband. The composition is clean and focused, reflecting a sophisticated lifestyle aesthetic. The background features a blurred, minimalist tech setup with cool blue ambient light, reinforcing a reliable and efficient high-fidelity product experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpHY1Ditx8CpQOOQeqHyOOynGmbYjo_qDXLEk4sha1dwPbUMmQk2YsbxymKVV2vf1buM5KO-ap1QqaqUPt26kCL3c4slMA8fF6fcwl9sdNbtpL9jPM3UL_qW2xiapT9UqH3SwhpLvWxuCDDOV-lM8oIRd26vC_xtWN0CU76hIng8MwArF3FMuLiQ_K4ZGSiMyTTKFUwtXW_6HSnCNKRT1dxu83CmE9H86rQBI-XPeyzYQTHt1NYDgGlXWVCjubeD08CrYhh4Mt6g"/>
+</div>
+<div class="flex flex-col justify-between flex-grow py-1">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Studio Pro Wireless</h3>
+<p class="font-label-sm text-label-sm text-outline">Matte Black • ANC</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-title-lg text-title-lg text-primary">$299.00</span>
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-4">
+<button class="w-8 h-8 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="font-label-lg text-label-lg text-on-surface w-4 text-center transition-all">1</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Section -->
+<section class="mt-xl space-y-md">
+<div class="bg-surface-container-low/50 rounded-2xl p-lg space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-body-lg text-body-lg text-on-surface font-medium">$578.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Estimated Shipping</span>
+<span class="font-body-lg text-body-lg text-on-surface font-medium">$12.50</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Estimated Tax</span>
+<span class="font-body-lg text-body-lg text-on-surface font-medium">$48.24</span>
+</div>
+<div class="h-[1px] bg-outline-variant/30 my-2"></div>
+<div class="flex justify-between items-center">
+<span class="font-title-lg text-title-lg text-on-surface">Total</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">$638.74</span>
+</div>
+</div>
+<!-- Action Button -->
+<a class="w-full bg-primary py-4 rounded-xl font-title-lg text-white shadow-lg active:scale-[0.98] transition-transform duration-200 flex items-center justify-center gap-2 mb-8 no-underline" href="javascript:void(0)" onclick="window.location.href='checkout.html'; // In a real app this would be {{DATA:SCREEN:SCREEN_119}}">
+                Proceed to Checkout
+                <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/90 backdrop-blur-md shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center h-16 px-md pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150" href="javascript:void(0)" onclick="window.location.href='dashboard.html'; // In a real app this would be {{DATA:SCREEN:SCREEN_117}}">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for quantity steppers with highlight effect
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const span = this.parentElement.querySelector('span.text-on-surface');
+                if (span) {
+                    let val = parseInt(span.innerText);
+                    let changed = false;
+                    if (this.innerText.includes('add')) {
+                        span.innerText = val + 1;
+                        changed = true;
+                    } else if (this.innerText.includes('remove') && val > 1) {
+                        span.innerText = val - 1;
+                        changed = true;
+                    }
+
+                    if (changed) {
+                        // Apply brief highlight effect
+                        span.classList.remove('quantity-highlight');
+                        void span.offsetWidth; // Trigger reflow
+                        span.classList.add('quantity-highlight');
+                    }
+                }
+            });
+        });
+
+        // Swipe-to-delete animation trigger logic (UI-only placeholder)
+        const swipeItem = document.querySelector('.animate-swipe-hint');
+        if(swipeItem) {
+            // The animation is handled by CSS keyframes. 
+            // In a production app, we would use Touch Events to handle real swiping.
+        }
+    </script>
+</body></html>

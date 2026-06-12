@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Luxe Shop - Product Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#737686",
+            "on-tertiary-fixed-variant": "#005236",
+            "primary-fixed": "#dbe1ff",
+            "surface-container-high": "#dee8ff",
+            "surface": "#f9f9ff",
+            "tertiary": "#006242",
+            "tertiary-fixed-dim": "#4edea3",
+            "secondary": "#712ae2",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#5a00c6",
+            "on-primary-fixed-variant": "#003ea8",
+            "surface-tint": "#0053db",
+            "secondary-container": "#8a4cfc",
+            "primary-fixed-dim": "#b4c5ff",
+            "primary": "#004ac6",
+            "inverse-surface": "#263143",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#434655",
+            "surface-dim": "#cfdaf2",
+            "primary-container": "#2563eb",
+            "on-tertiary-container": "#bdffdb",
+            "surface-container-highest": "#d8e3fb",
+            "on-tertiary-fixed": "#002113",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#25005a",
+            "on-background": "#111c2d",
+            "tertiary-container": "#007d55",
+            "secondary-fixed-dim": "#d2bbff",
+            "inverse-primary": "#b4c5ff",
+            "surface-container": "#e7eeff",
+            "on-primary-container": "#eeefff",
+            "on-primary-fixed": "#00174b",
+            "surface-container-low": "#f0f3ff",
+            "surface-variant": "#d8e3fb",
+            "tertiary-fixed": "#6ffbbe",
+            "on-error-container": "#93000a",
+            "inverse-on-surface": "#ecf1ff",
+            "outline-variant": "#c3c6d7",
+            "secondary-fixed": "#eaddff",
+            "background": "#f9f9ff",
+            "surface-bright": "#f9f9ff",
+            "on-surface": "#111c2d",
+            "on-secondary-container": "#fffbff",
+            "error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "xs": "8px",
+            "lg": "24px",
+            "base": "4px",
+            "xl": "32px",
+            "sm": "12px",
+            "gutter": "12px",
+            "container-margin": "16px",
+            "md": "16px"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "display-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "title-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "label-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+          },
+          "keyframes": {
+            "slide-in": {
+              "0%": { transform: "translateX(100%)" },
+              "100%": { transform: "translateX(0)" }
+            },
+            "toast-up": {
+              "0%": { transform: "translateY(100%)", opacity: "0" },
+              "15%": { transform: "translateY(0)", opacity: "1" },
+              "85%": { transform: "translateY(0)", opacity: "1" },
+              "100%": { transform: "translateY(100%)", opacity: "0" }
+            }
+          },
+          "animation": {
+            "slide-in": "slide-in 0.4s ease-out forwards",
+            "toast": "toast-up 2.5s ease-in-out forwards"
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #f9f9ff;
+      color: #111c2d;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .glass-effect {
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-lg text-on-background selection:bg-primary-fixed animate-slide-in">
+<!-- Toast Notification -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-sm hidden pointer-events-none" id="toast">
+<div class="bg-inverse-surface text-inverse-on-surface px-md py-4 rounded-xl shadow-2xl flex items-center gap-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">check_circle</span>
+<span class="font-label-lg">Added to your shopping bag</span>
+</div>
+</div>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm h-14 flex justify-between items-center px-md transition-all duration-300">
+<div class="flex items-center gap-2">
+<button aria-label="Back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-200" onclick="window.location.href='dashboard.html'">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">LUXE SHOP</h1>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Favorites" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="favorite">favorite</span>
+</button>
+<button aria-label="Share" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<main class="pt-14 pb-24">
+<!-- Product Hero Section -->
+<section class="relative w-full aspect-[4/5] bg-surface-container-low overflow-hidden">
+<img alt="Premium Leather Sneaker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbQkRTEW_h60Djzni-v4pbIxe50tyfx2Pw1Cl-52Ir7rK0PNkadCdoJdt0fPvmcsOLmM5_D4xi27ZXEzDxgVk1_C-D8rNl6Axj42lIjyfVAQnckmGP12QSi_6UJV6Kp_u3NPCqVc9SWbl5ngZna_6J1GlLP_qRB7IsQ-F19G8uJbAXDiDmWGrlos2wpMFoWlhfj6K5I1FXg1M2MT_29zhDebBqkpxHZTNLTIgVTmdI_Gqhoal6GQnNiwh99v8hLxTggwMGXK4LlA"/>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 px-3 py-1.5 rounded-full bg-black/10 backdrop-blur-md">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-white/50"></div>
+<div class="w-2 h-2 rounded-full bg-white/50"></div>
+<div class="w-2 h-2 rounded-full bg-white/50"></div>
+</div>
+</section>
+<!-- Product Content Container -->
+<div class="px-md mt-lg space-y-xl">
+<!-- Title and Price Block -->
+<header>
+<div class="flex justify-between items-start gap-4">
+<div class="space-y-1">
+<span class="font-label-lg text-label-lg text-primary uppercase tracking-widest">Heritage Series</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface leading-tight">Vanguard Leather Low-Top</h2>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">$285.00</span>
+</div>
+</div>
+<div class="flex items-center gap-1 mt-sm">
+<div class="flex">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star_half" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1">4.8 (124 reviews)</span>
+</div>
+</header>
+<!-- Color Selector -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg">Colorways</h3>
+<span class="font-label-lg text-label-lg text-on-surface-variant" id="selected-color-name">Optic White</span>
+</div>
+<div class="flex gap-sm">
+<button class="color-selector w-12 h-12 rounded-full border-2 border-primary p-0.5 transition-all active:scale-90 duration-150" data-color="Optic White">
+<div class="w-full h-full rounded-full bg-[#FFFFFF] border border-outline-variant"></div>
+</button>
+<button class="color-selector w-12 h-12 rounded-full border-2 border-transparent p-0.5 hover:border-outline-variant transition-all active:scale-90 duration-150" data-color="Carbon Black">
+<div class="w-full h-full rounded-full bg-[#2C2C2E]"></div>
+</button>
+<button class="color-selector w-12 h-12 rounded-full border-2 border-transparent p-0.5 hover:border-outline-variant transition-all active:scale-90 duration-150" data-color="Slate Grey">
+<div class="w-full h-full rounded-full bg-[#8E8E93]"></div>
+</button>
+<button class="color-selector w-12 h-12 rounded-full border-2 border-transparent p-0.5 hover:border-outline-variant transition-all active:scale-90 duration-150" data-color="Dusty Lavender">
+<div class="w-full h-full rounded-full bg-[#D1C4E9]"></div>
+</button>
+</div>
+</section>
+<!-- Size Selector -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg">Select Size</h3>
+<button class="font-label-lg text-label-lg text-primary hover:underline">Size Guide</button>
+</div>
+<div class="grid grid-cols-4 gap-xs">
+<button class="size-btn h-12 flex items-center justify-center rounded-xl border border-outline-variant font-label-lg text-label-lg transition-all active:scale-95">US 7</button>
+<button class="size-btn h-12 flex items-center justify-center rounded-xl border border-outline-variant font-label-lg text-label-lg transition-all active:scale-95">US 8</button>
+<button class="size-btn h-12 flex items-center justify-center rounded-xl border-2 border-primary bg-primary-fixed/30 font-label-lg text-label-lg font-bold text-primary transition-all active:scale-95">US 9</button>
+<button class="size-btn h-12 flex items-center justify-center rounded-xl border border-outline-variant font-label-lg text-label-lg transition-all active:scale-95">US 10</button>
+<button class="size-btn h-12 flex items-center justify-center rounded-xl border border-outline-variant font-label-lg text-label-lg transition-all active:scale-95">US 11</button>
+<button class="size-btn h-12 flex items-center justify-center rounded-xl border border-outline-variant font-label-lg text-label-lg transition-all active:scale-95">US 12</button>
+<button class="h-12 flex items-center justify-center rounded-xl border border-outline-variant bg-surface-container-highest text-outline cursor-not-allowed font-label-lg text-label-lg line-through">US 13</button>
+<button class="size-btn h-12 flex items-center justify-center rounded-xl border border-outline-variant font-label-lg text-label-lg transition-all active:scale-95">US 14</button>
+</div>
+</section>
+<!-- Description Section -->
+<section class="space-y-lg pb-10">
+<div class="p-lg rounded-xl bg-surface-container-low border border-outline-variant/30">
+<h3 class="font-title-lg text-title-lg mb-sm">The Craftsmanship</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Handcrafted in Italy from full-grain calfskin leather. The Vanguard features a sleek, minimal silhouette engineered for both versatility and extreme durability. Finished with hand-stitched detailing and an ultra-lightweight Margom rubber sole for unparalleled daily comfort.
+          </p>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div class="p-md rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center text-center space-y-xs">
+<span class="material-symbols-outlined text-primary" data-icon="eco">eco</span>
+<span class="font-label-lg text-label-lg font-bold">Sustainable</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">LWG Certified Leather</p>
+</div>
+<div class="p-md rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex flex-col items-center text-center space-y-xs">
+<span class="material-symbols-outlined text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-lg text-label-lg font-bold">Fast Delivery</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Free 2-day Shipping</p>
+</div>
+</div>
+<div class="space-y-sm">
+<details class="group border-b border-outline-variant/30 pb-sm">
+<summary class="list-none flex justify-between items-center cursor-pointer font-label-lg text-label-lg font-bold py-2">
+              Material Composition
+              <span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="pt-xs text-body-md text-on-surface-variant">
+              100% Full-grain leather upper, 100% Cotton laces, Recycled polyester lining, 100% Rubber outsole.
+            </div>
+</details>
+<details class="group border-b border-outline-variant/30 pb-sm">
+<summary class="list-none flex justify-between items-center cursor-pointer font-label-lg text-label-lg font-bold py-2">
+              Care Instructions
+              <span class="material-symbols-outlined group-open:rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="pt-xs text-body-md text-on-surface-variant">
+              Wipe clean with a damp cloth. Do not machine wash. Use neutral cream polish periodically to maintain leather luster.
+            </div>
+</details>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 w-full z-50 bg-surface/90 backdrop-blur-md rounded-t-xl shadow-[0_-2px_10px_rgba(0,0,0,0.05)] h-20 px-md flex items-center gap-md">
+<button class="flex items-center justify-center w-14 h-14 rounded-xl border border-outline-variant bg-surface-container-lowest active:scale-90 transition-all" onclick="window.location.href='cart.html'">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="flex-1 h-14 bg-primary text-on-primary rounded-xl font-title-lg text-title-lg font-bold flex items-center justify-center gap-2 active:scale-[0.98] transition-all shadow-lg shadow-primary/20" id="add-to-cart-btn">
+      Add to Cart
+      <span class="material-symbols-outlined text-on-primary" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+<script>
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('shadow-md', 'bg-white/95');
+      } else {
+        header.classList.remove('shadow-md', 'bg-white/95');
+      }
+    });
+
+    // Add to Cart Interactivity
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const toast = document.getElementById('toast');
+
+    addToCartBtn.addEventListener('click', () => {
+      // Show Success Toast Animation
+      toast.classList.remove('hidden');
+      toast.classList.add('animate-toast');
+      
+      // Temporary visual change on button
+      const originalContent = addToCartBtn.innerHTML;
+      addToCartBtn.innerHTML = `
+        <span class="material-symbols-outlined animate-spin">progress_activity</span>
+        Processing...
+      `;
+      addToCartBtn.disabled = true;
+
+      setTimeout(() => {
+        addToCartBtn.innerHTML = `
+          <span class="material-symbols-outlined">check_circle</span>
+          Added!
+        `;
+        addToCartBtn.classList.replace('bg-primary', 'bg-tertiary');
+        
+        // Navigation after toast shows
+        setTimeout(() => {
+          window.location.href = 'cart.html';
+        }, 1200);
+      }, 600);
+    });
+
+    // Color Selector Interaction
+    const colorSelectors = document.querySelectorAll('.color-selector');
+    const colorNameDisplay = document.getElementById('selected-color-name');
+    
+    colorSelectors.forEach(btn => {
+      btn.addEventListener('click', () => {
+        colorSelectors.forEach(b => b.classList.remove('border-primary'));
+        colorSelectors.forEach(b => b.classList.add('border-transparent'));
+        btn.classList.replace('border-transparent', 'border-primary');
+        colorNameDisplay.textContent = btn.getAttribute('data-color');
+      });
+    });
+
+    // Size Selector Interaction
+    const sizeButtons = document.querySelectorAll('.size-btn');
+    sizeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        sizeButtons.forEach(b => {
+          b.classList.remove('border-2', 'border-primary', 'bg-primary-fixed/30', 'font-bold', 'text-primary');
+          b.classList.add('border', 'border-outline-variant', 'font-normal');
+        });
+        btn.classList.add('border-2', 'border-primary', 'bg-primary-fixed/30', 'font-bold', 'text-primary');
+        btn.classList.remove('border', 'border-outline-variant', 'font-normal');
+      });
+    });
+  </script>
+</body></html>

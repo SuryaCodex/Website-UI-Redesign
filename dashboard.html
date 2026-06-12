@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>LUXE SHOP - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#737686",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container-high": "#dee8ff",
+                    "surface": "#f9f9ff",
+                    "tertiary": "#006242",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "secondary": "#712ae2",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#5a00c6",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-tint": "#0053db",
+                    "secondary-container": "#8a4cfc",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "primary": "#004ac6",
+                    "inverse-surface": "#263143",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#434655",
+                    "surface-dim": "#cfdaf2",
+                    "primary-container": "#2563eb",
+                    "on-tertiary-container": "#bdffdb",
+                    "surface-container-highest": "#d8e3fb",
+                    "on-tertiary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#25005a",
+                    "on-background": "#111c2d",
+                    "tertiary-container": "#007d55",
+                    "secondary-fixed-dim": "#d2bbff",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container": "#e7eeff",
+                    "on-primary-container": "#eeefff",
+                    "on-primary-fixed": "#00174b",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-variant": "#d8e3fb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#ecf1ff",
+                    "outline-variant": "#c3c6d7",
+                    "secondary-fixed": "#eaddff",
+                    "background": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "on-surface": "#111c2d",
+                    "on-secondary-container": "#fffbff",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "gutter": "12px",
+                    "container-margin": "16px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth horizontal scroll snapping for banners */
+        .banner-scroll-container {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+        .banner-item {
+            scroll-snap-align: start;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    </style>
+</head>
+<body class="text-on-background bg-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-container/90 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-md h-14 w-full">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95 duration-200">
+                menu
+            </button>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">LUXE SHOP</h1>
+<a class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full active:scale-95 duration-200" href="#" onclick="window.location.href='cart.html'">
+                notifications
+            </a>
+</div>
+</header>
+<main class="flex-1 mt-14 mb-20 overflow-x-hidden">
+<!-- Search Bar Section -->
+<section class="px-md mt-lg">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface-container-low border-none rounded-xl text-body-md focus:ring-2 focus:ring-primary focus:bg-white transition-all shadow-sm" placeholder="Search curated collections..." type="text"/>
+</div>
+</section>
+<!-- New Arrivals Banner (Horizontal Scrolling) -->
+<section class="mt-xl">
+<div class="flex justify-between items-center px-md mb-sm">
+<h2 class="font-title-lg text-title-lg text-on-surface">New Arrivals</h2>
+<button class="text-primary font-label-lg hover:underline transition-all">View All</button>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-md px-md pb-xs banner-scroll-container">
+<!-- Banner 1 -->
+<div class="banner-item relative flex-shrink-0 w-[85vw] h-48 rounded-2xl overflow-hidden shadow-md group active:scale-[0.98] transition-all duration-300">
+<img alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A cinematic, high-fashion photograph of a minimalist studio setting with soft side lighting. A pair of luxury white sneakers is positioned centrally against a neutral grey background. The lighting creates subtle, premium shadows, highlighting the fine texture of the leather. The mood is sophisticated, clean, and highlights a high-fidelity light-mode aesthetic consistent with luxury brand photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkYIOZ3CsM0Gm0DQIVv54Tckh8OJwGpvRmoSy7C8DppKt3EM1NE2pYiZal73v14pKP5VwpjLsq_W09OubpIHfNsytxe85nUEPT1trra5Ov8qpUg_HcZVGYDu_VUfCA_jJvgs922saiMtFy_xfpg4X7uY1uSmTcaKkb_tUPlN7UIVfEV3MpIpwxTVVIevBCPwZ92qnIyGosF8eAp0LUIOtqTr7o0bLWEDMR22xUdaI7qFvxIyzZ8Oayoqshrl-cjZNPnQN-tnxOjA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/60 to-transparent flex flex-col justify-end p-lg">
+<span class="text-white font-label-sm uppercase tracking-widest mb-1">Season Drop</span>
+<h3 class="text-white font-headline-md text-headline-md">The Minimalist Collection</h3>
+</div>
+</div>
+<!-- Banner 2 -->
+<div class="banner-item relative flex-shrink-0 w-[85vw] h-48 rounded-2xl overflow-hidden shadow-md group active:scale-[0.98] transition-all duration-300">
+<img alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close-up photograph of a luxury leather handbag resting on a marble surface. The lighting is bright and airy, with soft natural light streaming in from the side, creating a high-end editorial feel. The color palette is dominated by creams, whites, and soft tans, perfectly aligning with a premium light-mode UI. Every stitch of the bag is visible, emphasizing craftsmanship and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgsbNz-yupnAZBdMvhefHA8U4ABUjSAZ21cF3cmmy7ZHfTr9xGhgK-hXK3WF63J3ExwiHgtEgJmBz8PLVSrH-EW1tCDDuP_6s5v1CkYrywSZtXeXFRaVWB8-kcokQpgFV6yN2sbHAW0Jxk2M4z5lqydGNugcByF6q0WrQH8ovRbxsBZP0wLmbmQqwv7lvZHGM6it2GyG6yjUKXqTGy2gAaRxpi1vvzAy2laDEg8feWRZBs6QyTbkVx2a5e9sNW0oh43icM8Kf_Pw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/60 to-transparent flex flex-col justify-end p-lg">
+<span class="text-white font-label-sm uppercase tracking-widest mb-1">Limited Edition</span>
+<h3 class="text-white font-headline-md text-headline-md">Iconic Essentials</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Bento Grid -->
+<section class="mt-xl px-md">
+<h2 class="font-title-lg text-title-lg text-on-surface mb-sm">Explore Categories</h2>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Shoes -->
+<div class="bg-surface-container rounded-xl p-md flex flex-col justify-between h-32 active:scale-95 transition-all duration-200 hover:bg-surface-container-high cursor-pointer shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined text-primary text-3xl">steps</span>
+<span class="font-label-lg text-on-surface">Shoes</span>
+</div>
+<!-- Bags -->
+<div class="bg-surface-container rounded-xl p-md flex flex-col justify-between h-32 active:scale-95 transition-all duration-200 hover:bg-surface-container-high cursor-pointer shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined text-primary text-3xl">shopping_bag</span>
+<span class="font-label-lg text-on-surface">Bags</span>
+</div>
+<!-- Watches -->
+<div class="bg-surface-container rounded-xl p-md flex flex-col justify-between h-32 active:scale-95 transition-all duration-200 hover:bg-surface-container-high cursor-pointer shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined text-primary text-3xl">watch</span>
+<span class="font-label-lg text-on-surface">Watches</span>
+</div>
+<!-- Apparel -->
+<div class="bg-surface-container rounded-xl p-md flex flex-col justify-between h-32 active:scale-95 transition-all duration-200 hover:bg-surface-container-high cursor-pointer shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined text-primary text-3xl">apparel</span>
+<span class="font-label-lg text-on-surface">Apparel</span>
+</div>
+</div>
+</section>
+<!-- Recommended Section -->
+<section class="mt-xl px-md pb-lg">
+<h2 class="font-title-lg text-title-lg text-on-surface mb-sm">Recommended for You</h2>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Product Card 1 -->
+<div class="bg-white rounded-xl overflow-hidden border border-outline-variant shadow-sm flex flex-col h-full active:scale-[0.97] transition-all duration-200 hover:shadow-md cursor-pointer group" onclick="window.location.href='product.html'">
+<div class="relative h-40 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Professional product photography of a premium minimalist wristwatch. The watch features a clean white face and a light brown leather strap, placed on a soft-textured surface. The lighting is diffused and even, creating a calm and sophisticated atmosphere. The image is bright and clean, fitting a premium mobile e-commerce interface designed for a reliable shopping experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSQAl6fsMq-rFn_qE1TklSvVjJLi_QacZ69onvHT_PJmnBs5A6B-ffJyXQgdHrHFchgmpCwpngfX7U2EpnViCkm5i8l12N8CRFmCUv6iEWC74GqYY-mhhndFAiqbZYbjgk491mSM1pOFrfD6l9f7iBYHpIExtiEnF-Q8javCNie1IMO6X4Ko2lpPwX92c2ltEstcBLnAm0YD-aN5qcq2iEFf5UJCEa4CCIjqxG4zJ-0m_fecolhjj13fYcvIt_bNRfCyKoMJTNQQ"/>
+<button class="absolute top-2 right-2 bg-white/80 backdrop-blur-md p-1.5 rounded-full text-on-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-sm flex flex-col flex-1">
+<h4 class="font-body-md text-on-surface line-clamp-1 mb-base">Classic Chrono</h4>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-title-lg text-primary text-sm">$295.00</span>
+<button class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center active:scale-90 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white rounded-xl overflow-hidden border border-outline-variant shadow-sm flex flex-col h-full active:scale-[0.97] transition-all duration-200 hover:shadow-md cursor-pointer group" onclick="window.location.href='product.html'">
+<div class="relative h-40 overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A sleek and modern designer handbag in a soft blush pink color, presented in a high-end boutique setting. The lighting is warm yet bright, highlighting the premium texture of the leather. The background is slightly out of focus, showing a minimalist luxury interior. The overall mood is aspirational and refined, perfectly capturing the brand's 'reliable and sophisticated' personality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxh1alUEtodNTtnUehufdWSZiSem6REw52PT62Q7DMv1G3p5fe_gxA9JbmVoLC9BPZwYmxY3T_znKY3tj_ScaCLQejEZBHuC0oDHYX3aJZ8WHDgv5uxsdPSI8i19W7y8rpjSB0FUjQQsXTDXv1PwT4R-ZZeQJIF4sCeR1_6nfrdsIzbrRI588eRJ2dXIRaEfc0qhcjQ6Kv4D_8yVQ9vzOYIqkGKnrJ6Uqrlx02nJP_A-l1XqzjeIqeHgf6VLgd--hKha318ZrWpg"/>
+<button class="absolute top-2 right-2 bg-white/80 backdrop-blur-md p-1.5 rounded-full text-on-surface active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+</button>
+</div>
+<div class="p-sm flex flex-col flex-1">
+<h4 class="font-body-md text-on-surface line-clamp-1 mb-base">Enigma Tote</h4>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-title-lg text-primary text-sm">$1,150.00</span>
+<button class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center active:scale-90 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/90 dark:bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+<div class="flex justify-around items-center h-16 px-md w-full pb-safe">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<!-- Cart -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150 cursor-pointer" href="#" onclick="window.location.href='cart.html'">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-sm text-label-sm">Cart</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions for clickable elements
+        document.querySelectorAll('.active\\:scale-95, .active\\:scale-90, .active\\:scale-\\[0\\.97\\], .active\\:scale-\\[0\\.98\\]').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                // Tailwind utility handles the visual scale
+            });
+        });
+
+        // Search bar focus behavior
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+        
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('scale-[1.02]');
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('scale-[1.02]');
+        });
+
+        // Optional: Manual implementation of a subtle auto-scroll preview for New Arrivals
+        const scrollContainer = document.querySelector('.banner-scroll-container');
+        if (scrollContainer) {
+            let isScrolling = false;
+            scrollContainer.addEventListener('scroll', () => {
+                isScrolling = true;
+            });
+        }
+    </script>
+</body></html>
